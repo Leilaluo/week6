@@ -172,7 +172,11 @@ function loadLayer(geoJSONData){
                     }
                 }
         }).addTo(mymap);
+        if(earthquakelayer.feature == null){
+            alert('Luckily, no earthquake in past one hour!');
+        }
         mymap.fitBounds(earthquakelayer.getBounds());
+        
     }
     if (loadingBusstops == true){
         busstoplayer = L.geoJson(json).addTo(mymap).bindPopup("<b>"+"I am just a bus stop :)!"+"<b>");

@@ -1,8 +1,8 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "helloworld",
-  "short_name": "helloworld",
+  "name": "Week4",
+  "short_name": "Week4",
   "version": "week4phonegapapp",
   "description": "Hello World sample application that responds to the deviceready event.",
   "author": "PhoneGap Team",
