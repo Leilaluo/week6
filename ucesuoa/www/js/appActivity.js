@@ -172,7 +172,7 @@ function loadLayer(geoJSONData){
                     }
                 }
         }).addTo(mymap);
-        if(earthquakelayer.feature == null){
+        if(earthquakelayer == null){
             alert('Luckily, no earthquake in past one hour!');
         }
         mymap.fitBounds(earthquakelayer.getBounds());
