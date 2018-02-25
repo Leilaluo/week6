@@ -125,7 +125,7 @@ function getData(layername){
         url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson"
     }
     if (layername == "busstops") {
-        url = "http://developer.cege.ucl.ac.uk:31265/busstops.geojson"
+        url = "https://developer.cege.ucl.ac.uk:31065/busstops.geojson"
     }
     client.open('GET',url);
     client.onreadystatechange = dataResponse;
@@ -200,6 +200,50 @@ function removeData(layername){
         mymap.removeLayer(busstoplayer);
     }
             
+}
+
+var xhr; //define the global variable to process the AJAX request
+function callDivChange(){
+    xhr = new XMLHttpRequest();
+    var filename = document.getElementById("filename").value ;
+    xhr.open("GET",filename+'.html',true);
+    xhr.onreadystatechange = processDivChange;
+    try{
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
+    }
+    catch(e){
+        //this only works in internet explorer
+        
+        
+        
+    }
+    xhr.send();
+}
+
+function processDivChange(){
+    if(xhr.readyState<4) //while waiting for the response from the server
+        document.getElementById('div1').innerHTML = "Loading...";
+    else if (xhr.readyState===4){ //4 = Response from server has been completely loaded
+        if(xhr.status == 200 )
+            //http status between 200 to 299 are all sucessful
+            document.getElementById('div1').innerHTML = xhr.responseText;
+    }
+}
+
+function eqChanged(checkboxElem) {
+  if (checkboxElem.checked) {
+    getData('earthquakes');
+  } else {
+    removeData('earthquakes');
+  }
+}
+
+function bsChanged(checkboxElem) {
+  if (checkboxElem.checked) {
+    getData('busstops');
+  } else {
+    removeData('busstops');
+  }
 }
 
 

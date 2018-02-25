@@ -150,8 +150,9 @@
           <a class="mdl-navigation__link" href="#" onclick="getLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Get your location</a>
           <a class="mdl-navigation__link" href="#" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Calculate the distance</a>
           <a class="mdl-navigation__link" href="#" onclick="deleteAll()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Delete All</a>
-          <div class="mdl-layout-spacer"></div>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+          <!--<div class="mdl-layout-spacer"></div>-->
+          <a class="mdl-navigation__link" href="" onclick = "callDivChange();return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Change Div Content</a>
+          <!--<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>-->	  
         </nav>
       </div>
         
@@ -159,6 +160,60 @@
           <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
               <div id="mapid" style = "width:100%;height:400px;"></div> 
           </div>
+          
+            <div style="padding-left: 1%;">
+            <table cellpadding="10">
+                <tr>
+                    <td>Open the earthquake layer</td>
+                    <td>
+                        <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" 
+                        for = "switch-eq">
+                        <input type = "checkbox" id = "switch-eq" 
+                            class = "mdl-switch__input" onClick="eqChanged(this);">
+                        </label>
+                    </td>
+                    <td>Open the bus stops layer</td>
+                    <td>
+                        <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" 
+                        for = "switch-bs">
+                        <input type = "checkbox" id = "switch-bs" 
+                            class = "mdl-switch__input" onClick="bsChanged(this);" >
+                        </label>
+                    </td>
+                    
+             
+                </tr>
+            </table>
+          </div>
+<!-- <table id = "mytable">
+         <tr><td>On Switch</td><td>Off Switch</td>
+            <td>Disabled Switch</td></tr>
+         <tr>
+            <td> 
+               <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" 
+                  for = "switch-1">
+                  <input type = "checkbox" id = "switch-1" 
+                     class = "mdl-switch__input" onClick="cbChanged(this);" checked >
+               </label>
+            </td>
+            
+            <td>
+               <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" 
+                  for = "switch-2">
+                  <input type = "checkbox" id = "switch-2" 
+                     class = "mdl-switch__input">           
+               </label>
+            </td>
+            
+            <td>
+               <label class = "mdl-switch mdl-js-switch mdl-js-ripple-effect" 
+                  for = "switch-3">
+                  <input type = "checkbox" id = "switch-3" 
+                     class = "mdl-switch__input" disabled>
+               </label>
+            </td>
+         </tr>
+      </table>   -->
 <!--       <div>
     <button id = "getEarthquakeData" name = "getEarthquakeData" onclick="getData('earthquakes')"> Click here to get the earthquakes data </button>
     <button id = "removeEarthquakeData" name = "removeEarthquakeData" onclick="removeData('earthquakes')"> Click here to remove the earthquakes data </button>
@@ -196,8 +251,13 @@ basemap tiles -->
         
        
     </script>
+	<div id = "ajaxtest" style = "width:1600px; height:20px;"> </div>
      <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid"  id="graphdiv">
-              <div id="basicmapid" style = "width:100%;height:400px;"></div> 
+              <div id = "div1">this is the unchanged div content</div>
+              <div id="basicmapid" style = "width:100%;height:400px;">
+			  <input type="text" name = "filename" id = "filename" size = 50>
+			  <button id="button1" onclick = "callDivChange()"> Click me to change the DIV content</button>
+			  </div> 
           </div>
 <!--     <script>
         //load the map
